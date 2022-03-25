@@ -138,7 +138,7 @@ void ProcessUserInput(QueueList& list)
 				break;
 
 			default:
-				std::cout << "잘못된 명령어 입니다." << std::endl;
+				std::cout << "Incorrect Number!" << std::endl;
 				break;
 		}
 
