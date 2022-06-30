@@ -15,4 +15,6 @@ int main()
 	pNode = myTree.InsertRight(pRoot, 3);
 	myTree.InsertLeft(pNode, 6);
 	myTree.InsertRight(pNode, 7);
+
+	myTree.BreadthFirst();
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <queue>
 
 namespace mytree
 {
@@ -50,6 +51,35 @@ namespace mytree
 		{
 			pParent->mpRight = CreateNode(data);
 			return pParent->mpRight;
+		}
+
+		void Visit(Node* node)
+		{
+			std::cout << node->mData << " ";
+		}
+
+		void BreadthFirst()
+		{
+			std::queue<Node*> q;
+
+			q.push(mpRoot);
+
+			while (!q.empty())
+			{
+				auto pNode = q.front();
+				Visit(pNode);
+				q.pop();
+
+				if (pNode->mpLeft != nullptr)
+				{
+					q.push(pNode->mpLeft);
+				}
+
+				if (pNode->mpRight != nullptr)
+				{
+					q.push(pNode->mpRight);
+				}
+			}
 		}
 	};
 }
