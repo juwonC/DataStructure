@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // Max Heap
 class Heap
@@ -23,12 +24,55 @@ public:
 		}
 	}
 
+	int Pop()
+	{
+		if (mHeap.size() == 0)
+		{
+			return 0;
+		}
+
+		int item = mHeap.front();
+		mHeap[0] = mHeap.back();
+		mHeap.pop_back();
+
+		int i{ 0 };
+
+		while (i < mHeap.size())
+		{
+			unsigned long big_child = (i * 2) + 1;
+
+			if (big_child >= mHeap.size())
+			{
+				break;
+			}
+
+			if (big_child + 1 < mHeap.size() &&
+				mHeap[big_child] < mHeap[big_child + 1])
+			{
+				big_child++;
+			}
+
+			if (mHeap[i] >= mHeap[big_child])
+			{
+				break;
+			}
+
+			std::swap(mHeap[i], mHeap[big_child]);
+
+			i = big_child;
+		}
+
+		return item;
+	}
+
 	void Print()
 	{
 		for (auto& e : mHeap)
 		{
 			std::cout << e << " ";
 		}
+
+		std::cout << std::endl;
 	}
 };
 
@@ -44,5 +88,18 @@ int main()
 	h.Insert(4);
 	h.Insert(5);
 
+	h.Pop();
+	h.Print();
+
+	h.Pop();
+	h.Print();
+
+	h.Pop();
+	h.Print();
+
+	h.Pop();
+	h.Print();
+
+	h.Pop();
 	h.Print();
 }
