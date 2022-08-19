@@ -23,5 +23,9 @@ public:
 	void Push_back(Deque& deque, int value);
 	void Pop_front(Deque& deque);
 	void Pop_back(Deque& deque);
+	void GetSize(Deque& deque);
+	void CheckEmpty(Deque& deque);
+	void GetFront(Deque& deque);
+	void GetBack(Deque& deque);
 };
 
