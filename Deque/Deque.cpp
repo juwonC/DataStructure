@@ -33,6 +33,22 @@ void Deque::UserInput(Deque& deque, std::string input)
     {
         Pop_back(deque);
     }
+    else if (input == "size")
+    {
+        GetSize(deque);
+    }
+    else if (input == "empty")
+    {
+        CheckEmpty(deque);
+    }
+    else if (input == "front")
+    {
+        GetFront(deque);
+    }
+    else if (input == "back")
+    {
+        GetBack(deque);
+    }
     else
     {
         return;
@@ -127,16 +143,39 @@ void Deque::Pop_back(Deque& deque)
 
 void Deque::GetSize(Deque& deque)
 {
+    std::cout << deque.count << '\n';
 }
 
 void Deque::CheckEmpty(Deque& deque)
 {
+    if (deque.count == 0)
+    {
+        std::cout << 1 << '\n';
+    }
+    else
+    {
+        std::cout << 0 << '\n';
+    }
 }
 
 void Deque::GetFront(Deque& deque)
 {
+    if (deque.count == 0)
+    {
+        std::cout << -1 << '\n';
+        return;
+    }
+
+    std::cout << deque.pFront->value << '\n';
 }
 
 void Deque::GetBack(Deque& deque)
 {
+    if (deque.count == 0)
+    {
+        std::cout << -1 << '\n';
+        return;
+    }
+
+    std::cout << deque.pRear->value << '\n';
 }
