@@ -14,6 +14,10 @@ void UserInput(Circular& c, std::string input);
 void Print(Circular& c);
 void Push(Circular& c, int value);
 void Pop(Circular& c);
+void GetSize(Circular& c);
+void CheckEmpty(Circular& c);
+void GetFront(Circular& c);
+void GetBack(Circular& c);
 
 int main()
 {
@@ -53,6 +57,22 @@ void UserInput(Circular& c, std::string input)
 	else if (input == "pop")
 	{
 		Pop(c);
+	}
+	else if (input == "size")
+	{
+		GetSize(c);
+	}
+	else if (input == "empty")
+	{
+		CheckEmpty(c);
+	}
+	else if (input == "front")
+	{
+		GetFront(c);
+	}
+	else if (input == "back")
+	{
+		GetBack(c);
 	}
 	else
 	{
@@ -95,4 +115,43 @@ void Pop(Circular& c)
 
 	c.head = (c.head + 1) % QUEUE_SIZE;
 	std::cout << c.container[c.head] << '\n';
+}
+
+void GetSize(Circular& c)
+{
+	std::cout << c.tail - c.head << '\n';
+}
+
+void CheckEmpty(Circular& c)
+{
+	if (c.head == c.tail)
+	{
+		std::cout << 1 << '\n';
+	}
+	else
+	{
+		std::cout << 0 << '\n';
+	}
+}
+
+void GetFront(Circular& c)
+{
+	if (c.tail == c.head)
+	{
+		std::cout << "Queue is empty!" << '\n';
+		return;
+	}
+
+	std::cout << c.container[c.head + 1] << '\n';
+}
+
+void GetBack(Circular& c)
+{
+	if (c.tail == c.head)
+	{
+		std::cout << "Queue is empty!" << '\n';
+		return;
+	}
+	
+	std::cout << c.container[c.tail] << '\n';
 }
