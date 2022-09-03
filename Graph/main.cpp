@@ -20,7 +20,22 @@ void CreateGraph_1()
 	v[5].edges.push_back(&v[4]);
 }
 
+void CreateGraph_2()
+{
+	struct Vertex
+	{
+
+	};
+
+	std::vector<std::vector<int>> adjacent(6);
+	adjacent[0] = { 1, 3 };
+	adjacent[1] = { 0, 2, 3 };
+	adjacent[3] = { 4 };
+	adjacent[5] = { 4 };
+}
+
 int main()
 {
-
+	CreateGraph_1();
+	CreateGraph_2();
 }
