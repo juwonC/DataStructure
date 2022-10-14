@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{91bfab2e-2d5e-451a-b661-2209c9002414}</ProjectGuid>
+    <ProjectGuid>{dc537257-116f-486a-9b1b-5183ff34b32e}</ProjectGuid>
     <RootNamespace>AdjacencyMatrixGraph</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
