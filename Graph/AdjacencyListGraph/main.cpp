@@ -5,6 +5,7 @@ struct Vertex
 	int value;
 
 	Vertex* pNext;
+	struct Edge* pAdjacencyList;
 };
 
 struct Edge
@@ -19,7 +20,7 @@ struct AdjacecnyListGraph
 {
 	int size;
 
-	Vertex* vertices;
+	Vertex* pVertices;
 };
 
 Vertex* CreateVertex(int vertex)
@@ -48,9 +49,42 @@ AdjacecnyListGraph* CreateAdjacecnyListGraph()
 	AdjacecnyListGraph* graph = new AdjacecnyListGraph();
 
 	graph->size = 0;
-	graph->vertices = nullptr;
+	graph->pVertices = nullptr;
 
 	return graph;
+}
+
+void DeleteEdge(Edge* edge)
+{
+	delete edge;
+}
+
+void DeleteVertex(Vertex* vertex)
+{
+	while (vertex->pAdjacencyList != nullptr)
+	{
+		Edge* edge = vertex->pAdjacencyList->pNext;
+		
+		DeleteEdge(vertex->pAdjacencyList);
+
+		vertex->pAdjacencyList = edge;
+	}
+
+	delete vertex;
+}
+
+void DeleteGraph(AdjacecnyListGraph* graph)
+{
+	while(graph->pVertices != nullptr)
+	{
+		Vertex* vertices = graph->pVertices->pNext;
+
+		DeleteVertex(graph->pVertices);
+
+		graph->pVertices = vertices;
+	}
+
+	delete graph;
 }
 
 int main()
